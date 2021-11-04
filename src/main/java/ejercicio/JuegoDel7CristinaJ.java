@@ -20,21 +20,19 @@ public class JuegoDel7CristinaJ {
 
         //Random para sacar números random
         Random numeroRandom = new Random();
-        //Contador de rondas para que se repita el código 5 veces.
-        int rondas = 0;
 
         //Contadores de victorias de los jugadores.
         int contadorJugador1 = 0, contadorJugador2 = 0;
 
-        do {
+        for (int i = 0; i < 5; i++) {
             System.out.println("Bienvenido al juego del 7"
-                    + "\nEsta es la ronda " + rondas);
+                    + "\nEsta es la ronda " + (i + 1));
+            System.out.println("------------------------------------\n");
             //Para generar el número random del jugador 1
             int numeroRandomJugador1 = numeroRandom.nextInt(5) + 1;
             System.out.println("El jugador 1 ha sacado " + numeroRandomJugador1);
 
             //Para generar el número random del jugador 2
-            System.out.println("------------------------------------");
             int numeroRandomJugador2 = numeroRandom.nextInt(5) + 1;
             System.out.println("El jugador 2 ha sacado " + numeroRandomJugador2);
 
@@ -48,13 +46,13 @@ public class JuegoDel7CristinaJ {
                 System.out.println("Gana jugador 1");
                 //El contador del jugador 1 suma 1
                 contadorJugador1++;
-                
+
                 //Si hay empate
             } else if (suma == 7) {
                 System.out.println("No hay ningún ganador");
                 //No cuenta la ronda, por eso se resta 1
-                rondas--;
-                
+                i--;
+
                 //Si es mayor de 7
             } else {
                 //gana el jugador 2
@@ -64,8 +62,10 @@ public class JuegoDel7CristinaJ {
             }
 
             System.out.println("---------FIN DE PARTIDA-----------\n\n");
-            rondas++;
-        } while (rondas < 5);
+            if (contadorJugador1 == 3 || contadorJugador2 == 3) {
+                break;
+            }
+        }
 
         //Para decir quien es el ganador de las 5 rondas
         if (contadorJugador1 > contadorJugador2) {
